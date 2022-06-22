@@ -1,0 +1,138 @@
+*,
+*::before,
+*::after {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --pink: #fbe6f4ff;
+    --yellow: #fffad1ff;
+    --green: #e1f0e5ff;
+    --blue: #b5caf9ff;
+    --orange: #f5e6db;
+    --raisin: rgb(38, 37, 43);
+    --grey: #d4d4d4;
+}
+
+body {
+    background-color: var(--raisin);
+    color: white;
+    height: 100vh;
+    font-size: 2em;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.scene {
+    max-height: 100%;
+    max-width: 100%;
+    min-height: 100%;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+p {
+    margin: 0 0 1em;
+}
+
+.countdown-display {
+    text-transform: uppercase;
+    font-size: 3rem;
+    font-family: 'Roboto Mono', monospace;
+    background-color:rgb(38, 37, 43);
+    position: relative;
+    padding: 1rem 2rem 2rem;
+}
+
+@keyframes animate
+{
+    0%, 100%
+    {
+        transform: translateY(-2px);
+    }
+    50% {
+        transform: translateY(2px);
+    }
+}
+
+.rocket {
+    margin-bottom: 1rem;
+    position: relative;
+    bottom: 0px;
+    transition: 6s ease-in;
+}
+
+.rocket img {
+    max-width: 128px;
+}
+
+.rocket::after {
+    content: '';
+    position: absolute;
+    bottom: -105px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 10px;
+    height: 120px;
+    background: linear-gradient(#00d0ff, transparent) ;
+    display: none;
+    transition: 0.3s ease;
+}
+
+.rocket::before {
+    content: '';
+    position: absolute;
+    bottom: -105px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 120px;
+    background: #00d0ff;
+    filter: blur(20px);
+    display: none;
+    transition: 0.3s ease;
+}
+
+.lunch-now .rocket {
+    animation: animate 0.1s ease infinite; 
+    bottom: 200px;
+}
+
+.lunch-now.space .rocket::before {
+    background: #ff440a;
+}
+.lunch-now.space .rocket::after {
+    background: linear-gradient(#ff440a, transparent) ;
+}
+
+.lunch-now .rocket::before {
+    display: block;
+}
+.lunch-now .rocket::after {
+    display: block;
+}
+
+.scene i {
+    position: absolute;
+    max-width: 100%;
+    max-height: 100vh;
+    top: -200px;
+    background: rgba(255,255,255,0.5);
+    animation: animateStars linear infinite;
+    animation-delay: 20s;
+}
+
+@keyframes animateStars {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(120vh);
+    }
+} 
+
